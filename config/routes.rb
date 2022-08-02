@@ -9,4 +9,13 @@ Rails.application.routes.draw do
   end
 
   root to: 'public/homes#top'
+
+  scope module: :public do
+    resources :users, only: [:show, :edit, :update] do
+      collection do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
+  end
 end

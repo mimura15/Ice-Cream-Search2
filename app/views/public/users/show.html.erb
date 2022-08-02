@@ -1,0 +1,13 @@
+<div class="card shadow-sm">
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "50x50" %>
+  <% else %>
+    <%= image_tag 'sweets_icecream', size: "50x50" %>
+  <% end %>
+  <div class="card-body">
+    <p class="card-text">
+      <%= @user.name %>
+      <%= @user.message %>
+    </p>
+  </div>
+</div>

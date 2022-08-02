@@ -11,4 +11,6 @@ class User < ApplicationRecord
     end
   end
 
+  has_one_attached :image
+
 end
