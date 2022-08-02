@@ -6,8 +6,9 @@
   <% end %>
   <div class="card-body">
     <p class="card-text">
-      <%= @user.name %>
+      <%= @user.name %><br>
       <%= @user.message %>
     </p>
+    <%= link_to "編集", edit_user_path(@user) %>
   </div>
 </div>

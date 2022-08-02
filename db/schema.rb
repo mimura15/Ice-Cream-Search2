@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_113917) do
     t.integer "shop_id"
     t.string "title"
     t.text "content"
-    t.boolean "non_display"
+    t.boolean "non_display", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_113917) do
     t.string "ice_name"
     t.integer "price"
     t.text "feedback"
-    t.boolean "non_display"
+    t.boolean "non_display", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_113917) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "message"
-    t.boolean "is_active"
+    t.boolean "is_active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -9,7 +9,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :ice_name
       t.integer :price
       t.text :feedback
-      t.boolean :non_display
+      t.boolean :non_display, default: false
 
       t.timestamps
     end
