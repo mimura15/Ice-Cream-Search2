@@ -33,4 +33,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-  使用検討中です
+  かわいいフリー素材集 いらすとや　https://www.irasutoya.com/

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>ユーザー一覧</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザーネーム</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <th><%= user.id %></th>
+            <th><%= user.name %></th>
+            <th><%= user.email %></th>
+            <th>
+              <% if user.is_active %>
+                退会
+              <% else %>
+                有効
+              <% end %>
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

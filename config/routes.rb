@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+
   scope module: :public do
     resources :users, only: [:show, :edit, :update] do
       collection do
