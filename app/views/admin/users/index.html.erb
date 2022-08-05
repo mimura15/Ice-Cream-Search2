@@ -16,7 +16,11 @@
           <% @users.each do |user| %>
           <tr>
             <th><%= user.id %></th>
-            <th><%= user.name %></th>
+            <th>
+              <%= link_to admin_user_path(user.id) do %>
+                <%= user.name %>
+              <% end %>
+            </th>
             <th><%= user.email %></th>
             <th>
               <% if user.is_active %>
