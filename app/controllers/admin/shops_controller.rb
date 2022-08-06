@@ -21,11 +21,16 @@ class Admin::ShopsController < ApplicationController
   end
 
   def edit
-
+    @shop = Shop.find(params[:id])
   end
 
   def update
-
+    @shop = Shop.find(params[:id])
+    if @shop.update(shop_params)
+      redirect_to admin_shop_path(@shop.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

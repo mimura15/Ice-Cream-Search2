@@ -25,7 +25,11 @@
           <% @shops.each do |shop| %>
           <tr>
             <td><%= shop.created_at %></td>
-            <td><%= shop.name %></td>
+            <td>
+              <%= link_to admin_shops_path(shop.id) do %>
+                <%= shop.name %>
+              <% end %>
+            </td>
             <td><%= shop.address %></td>
           </tr>
           <% end %>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_with model: @shop, url: admin_shop_path do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>店舗画像</th>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th>店舗名</th>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= f.text_field :address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= f.text_field :telepone %></td>
+            </tr>
+            <tr>
+              <th>Fax</th>
+              <td><%= f.text_field :facsimile %></td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>
+                <%= f.time_select(:open_time, {class: 'select-time', id: "open_time", prompt: '--', time_separator: ':'}, ignore_data: true) %>
+                ~
+                <%= f.time_select(:close_time, {class: 'select-time', id: "close_time", prompt: '--', time_separator: ':'}, ignore_data: true) %>
+              </td>
+            </tr>
+            <tr>
+              <th>店休日</th>
+              <td><%= f.text_field :off_day %></td>
+            </tr>
+            <tr>
+              <th>HP</th>
+              <td><%= f.text_field :website %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <%= f.submit '変更を保存する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

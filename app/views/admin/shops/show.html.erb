@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <%= image_tag @shop.image, size: "100x100" %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>店舗名</th>
+            <td><%= @shop.name %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @shop.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号(FAX)</th>
+            <td><%= @shop.telepone %>(<%= @shop.facsimile %>)</td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td><%= @shop.open_time %> ~ <%= @shop.close_time %></td>
+          </tr>
+          <tr>
+            <th>店休日</th>
+            <td><%= @shop.off_day %></td>
+          </tr>
+          <tr>
+            <th>HP</th>
+            <td><%= @shop.website %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "編集する", edit_admin_shop_path(@shop.id) %>
+    </div>
+  </div>
+</div>
