@@ -18,7 +18,7 @@
           </tr>
           <tr>
             <th>営業時間</th>
-            <td><%= @shop.open_time %> ~ <%= @shop.close_time %></td>
+            <td><%= @shop.open_time.strftime("%H:%M") %> ~ <%= @shop.close_time.strftime("%H:%M") %></td>
           </tr>
           <tr>
             <th>店休日</th>
