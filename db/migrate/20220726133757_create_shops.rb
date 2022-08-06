@@ -6,8 +6,8 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.string :address
       t.string :telepone
       t.string :facsimile
-      t.string :open_time
-      t.string :close_time
+      t.time :open_time
+      t.time :close_time
       t.string :off_day
       t.string :website
 

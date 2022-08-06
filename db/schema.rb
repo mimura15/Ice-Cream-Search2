@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2022_08_02_113917) do
     t.string "address"
     t.string "telepone"
     t.string "facsimile"
-    t.string "open_time"
-    t.string "close_time"
+    t.time "open_time"
+    t.time "close_time"
     t.string "off_day"
     t.string "website"
     t.datetime "created_at", precision: 6, null: false
