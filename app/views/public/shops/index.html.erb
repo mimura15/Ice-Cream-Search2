@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>店舗</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th>店舗名</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @shops.each do |shop| %>
+          <tr>
+            <td><%= image_tag shop.image, size: "50x50" %></td>
+            <td>
+              <%= link_to admin_shop_path(shop.id) do %>
+                <%= shop.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
