@@ -8,10 +8,12 @@ class Public::PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
     @shops = Shop.all
   end
 
   def create
+    post = Post.new(post_params)
 
   end
 
@@ -25,6 +27,12 @@ class Public::PostsController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content, images: [])
   end
 
 end

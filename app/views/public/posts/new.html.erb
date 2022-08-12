@@ -6,7 +6,7 @@
           <tbody>
             <tr>
               <th>投稿画像</th>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
+              <td><%= f.file_field :images, multiple: true %></td>
             </tr>
             <tr>
               <th>タイトル</th>
