@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_with model: @post, url: posts_path do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>投稿画像</th>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th>タイトル</th>
+              <td><%= f.text_field :title %></td>
+            </tr>
+            <tr>
+              <th>近くの店舗</th>
+              <td><%= f.collection_select :shop_id, @shops, :id, :name, prompt: "店舗を選択する"%></td>
+            </tr>
+            <tr>
+              <th>できごと</th>
+              <td><%= f.text_area :content %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <%= f.submit '新規投稿する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
