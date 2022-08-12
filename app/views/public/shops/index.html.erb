@@ -22,7 +22,7 @@
           <tr>
             <td><%= image_tag shop.image, size: "50x50" %></td>
             <td>
-              <%= link_to admin_shop_path(shop.id) do %>
+              <%= link_to shop_path(shop.id) do %>
                 <%= shop.name %>
               <% end %>
             </td>

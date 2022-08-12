@@ -1,16 +1,9 @@
-<div class="card shadow-sm">
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image, size: "50x50" %>
-  <% else %>
-    <%= image_tag 'sweets_icecream', size: "50x50" %>
-  <% end %>
-  <div class="card-body">
-    <p class="card-text">
-      <%= @user.name %><br>
-      <%= @user.message %>
-    </p>
-
-      <%= link_to "編集", edit_user_path(@user) %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/user', user: @user %>
+    </div>
   </div>
 </div>
+
+<%= link_to "編集", edit_user_path(@user) %>

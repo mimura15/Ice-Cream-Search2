@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      
+    </div>
+    <div class="col-md-9">
+      <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <%= image_tag image, width: 200, height: 200 %>
+        <% end %>
+      <% end %>
+      
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
+          <tr>
+            <th>近くの店舗</th>
+            <td>
+              <%= link_to shop_path(shop.id) do %>
+                <%= @post.shop.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>できごと</th>
+            <td><%= @post.content %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

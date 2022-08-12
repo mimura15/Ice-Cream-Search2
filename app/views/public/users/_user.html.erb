@@ -1,0 +1,17 @@
+<% if @user.image.attached? %>
+  <%= image_tag @user.image, size: "50x50" %>
+<% else %>
+  <%= image_tag 'sweets_icecream', size: "50x50" %>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td><%= @user.message %></td>
+    </tr>
+  </tbody>
+</table>
+
