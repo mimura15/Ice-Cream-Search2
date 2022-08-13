@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      
+      <%= render 'public/users/user', user: @user %>
     </div>
     <div class="col-md-9">
       <% if @post.images.attached? %>
@@ -9,7 +9,7 @@
           <%= image_tag image, width: 200, height: 200 %>
         <% end %>
       <% end %>
-      
+
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -19,9 +19,9 @@
           <tr>
             <th>近くの店舗</th>
             <td>
-              <%= link_to shop_path(shop.id) do %>
+
                 <%= @post.shop.name %>
-              <% end %>
+
             </td>
           </tr>
           <tr>
