@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_with model: @post, url: post_path(@post.id) do |f| %>
+        <%= if post.images.attached? %>
+          <p>選択済みの画像（削除する画像にチェックをつけてください）</p>
+          <%= @post.images.each do |image| %>
+            <%= form.check_box :image_ids, { multiple: true }, image.id, false %>
+            <label for="post_image_ids_<%= image.id %>" >
+              <%= image_tag image, size: '100x100' %>
+            </label>
+          <% end %>
+        <% end 
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>投稿画像</th>
+              <td><%= f.file_field :images, multiple: true %></td>
+            </tr>
+            <tr>
+              <th>タイトル</th>
+              <td><%= f.text_field :title %></td>
+            </tr>
+            <tr>
+              <th>近くの店舗</th>
+              <td><%= f.collection_select :shop_id, @shops, :id, :name, prompt: "店舗を選択する"%></td>
+            </tr>
+            <tr>
+              <th>できごと</th>
+              <td><%= f.text_area :content %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <%= f.submit '変更を保存する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
