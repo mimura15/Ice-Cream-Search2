@@ -11,9 +11,9 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :post
+  has_many :posts
   has_many :review
-  has_many :comment
+  has_many :comments
   has_one_attached :image
 
   validates :name, presence: true

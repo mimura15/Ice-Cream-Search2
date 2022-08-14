@@ -4,9 +4,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @post = Post.find(params[:id])
-    @shop = Shop.find(params[:id])
+    @user = @post.user
+    @shop = @post.shop
   end
 
   def new
@@ -15,9 +15,9 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    post = current_user.posts.build(post_params)
     if post.save
-      redirect_to post_path(post.id)
+      redirect_to post_path(post)
     else
       render :new
     end
