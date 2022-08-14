@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   has_many :posts
-  has_many :review
+  has_many :reviews
   has_many :comments
   has_one_attached :image
 
