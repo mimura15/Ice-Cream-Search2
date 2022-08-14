@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "50x50" %>
+      <% else %>
+        <%= image_tag 'sweets_icecream', size: "50x50" %>
+      <% end %>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to admin_user_path(@user.id) do %>
+                <%= @user.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= @user.message %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-9">
+      <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <%= image_tag image, width: 200, height: 200 %>
+        <% end %>
+      <% end %>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
+          <tr>
+            <th>近くの店舗</th>
+            <td><%= @post.shop.name %></td>
+          </tr>
+          <tr>
+            <th>できごと</th>
+            <td><%= @post.content %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
