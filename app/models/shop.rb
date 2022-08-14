@@ -1,4 +1,6 @@
 class Shop < ApplicationRecord
+  has_many :post
+  has_many :review
   has_one_attached :image
 
   validates :image, presence: true
