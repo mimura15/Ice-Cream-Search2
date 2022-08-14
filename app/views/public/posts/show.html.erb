@@ -23,9 +23,9 @@
           <tr>
             <th>近くの店舗</th>
             <td>
-
+              <%= link_to shop_path(@shop.id) do %>
                 <%= @post.shop.name %>
-
+              <% end %>
             </td>
           </tr>
           <tr>
