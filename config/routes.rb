@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :shops
-    resources :posts, only: [:index, :show, :update, :destroy] do
+    resources :shops do
       resources :reviews, only: [:index, :show, :update, :destroy]
     end
+    resources :posts, only: [:index, :show, :update, :destroy]
   end
 
   scope module: :public do
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
         patch :withdraw
       end
     end
-    resources :shops, only: [:index, :show]
-    resources :posts do
-      resources :reviews, except: [:index]
+    resources :shops, only: [:index, :show] do
+      resources :reviews
     end
+    resources :posts
   end
 end
