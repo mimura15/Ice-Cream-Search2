@@ -5,7 +5,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-
+    @review = Review.find(params[:id])
+    @shop = Shop.find(params[:shop_id])
   end
 
   def new
@@ -14,9 +15,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    review = current_user.review.build(review_params)
+    # pp "ほげ",current_user, user_signed_in?
+    review = current_user.reviews.build(review_params)
+    shop_id = params[:shop_id] #shop_review_pathのidを揃えるために記述、必ず必要な文ではない(params[:shop_id],review.id)でも大丈夫
     if review.save
-      redirect_to shop_review_path(review.id)
+      redirect_to shop_review_path(shop_id,review.id)
     else
       render :new
     end
