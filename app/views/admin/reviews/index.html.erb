@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>レビュー一覧</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-success">
+          <tr>
+            <th></th>
+            <th>投稿者</th>
+            <th>レビュー店舗</th>
+            <th>レビュー日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to admin_review_path(review.id) do %>
+                <%= review.id %>
+              <% end %>
+            </td>
+            <td><%= review.user.name %></td>
+            <td><%= review.shop.name %></td>
+            <td><%= review.created_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
