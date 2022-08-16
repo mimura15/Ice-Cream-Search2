@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_with model: [@shop, @review], url: shop_review_path(@review.id) do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>店舗</th>
+              <td><%= @shop.name %></td>
+            </tr>
+            <tr>
+              <th>タイトル</th>
+              <td><%= f.text_field :title %></td>
+            </tr>
+            <tr>
+              <th>評価</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>食べたアイス</th>
+              <td><%= f.text_field :ice_name %></td>
+            </tr>
+            <tr>
+              <th>値段</th>
+              <td><%= f.text_field :price %>円</td>
+            </tr>
+            <tr>
+              <th>レビュー</th>
+              <td><%= f.text_area :feedback %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.hidden_field :shop_id, :value => @shop.id %>
+        <div class="actions">
+          <%= f.submit 'レビューを変更する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

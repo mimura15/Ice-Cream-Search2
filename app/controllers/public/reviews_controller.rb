@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   def index
-    @reviews = Review.where(shop_id:params[:shop_])
+    @reviews = Review.where(shop_id:params[:shop_id])
     @shop = Shop.find(params[:shop_id])
   end
 
@@ -26,11 +26,18 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
-
+    @review = Review.find(params[:id])
+    @shop = Shop.find(params[:shop_id])
   end
 
   def update
-
+    @review = Review.find(params[:id])
+    shop_id = params[:shop_id]
+    if @review.update(review_params)
+      redirect_to shop_review_path(shop_id, @review.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
