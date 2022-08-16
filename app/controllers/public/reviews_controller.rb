@@ -5,8 +5,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
     @shop = Shop.find(params[:shop_id])
+    @review = Review.find(params[:id])
   end
 
   def new
@@ -41,7 +41,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
-
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to shop_reviews_path(params[:shop_id])
   end
 
   private
