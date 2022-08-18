@@ -26,7 +26,9 @@ Rails.application.routes.draw do
       end
     end
     resources :shops, only: [:index, :show] do
-      resources :reviews
+      resources :reviews do
+        resources :comments, only: [:create]
+      end
     end
     resources :posts
   end

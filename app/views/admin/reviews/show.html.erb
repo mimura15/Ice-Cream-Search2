@@ -1,0 +1,14 @@
+<% if @review.user.image.attached? %>
+  <%= image_tag @review.user.image, size: "50x50" %>
+<% else %>
+  <%= image_tag 'sweets_icecream', size: "50x50" %>
+<% end %>
+
+<%= @review.user.name %>
+<%= @review.title %>
+<%= @review.ice_name %>
+<%= @review.price %>
+<%= @review.feedback %>
+<%= @review.created_at.strftime("%Y/%m/%d") %>
+
+<%= link_to "レビューの削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "このレビューを削除しますか?" %>
