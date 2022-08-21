@@ -21,7 +21,7 @@
           <tr>
             <td>
               <% if post.images.attached? %>
-                <%= image_tag post.images[0].image.to_s, size: "50x50" %>
+                <%= image_tag post.images[0], size: "50x50" %>
               <% else %>
                 <%= image_tag 'sweets_icecream', size: "50x50" %>
               <% end %>
