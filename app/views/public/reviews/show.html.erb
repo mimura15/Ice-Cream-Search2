@@ -1,6 +1,8 @@
 <h1><%= @shop.name %></h1>
-<%= link_to "レビューの編集", edit_shop_review_path(@review.shop.id, @review.id) %>
-<%= link_to "レビューの削除", shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" %><br>
+<% if @review.user == current_user %>
+  <%= link_to "レビューの編集", edit_shop_review_path(@review.shop.id, @review.id) %>
+  <%= link_to "レビューの削除", shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" %>
+<% end %><br>
 
 <% if @review.user.image.attached? %>
   <%= image_tag @review.user.image, size: "50x50" %>
