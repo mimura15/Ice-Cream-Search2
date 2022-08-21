@@ -50,6 +50,6 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:shop_id, :title, :ice_name, :price, :feedback)
+    params.require(:review).permit(:shop_id, :title, :ice_name, :price, :feedback, :rate)
   end
 end
