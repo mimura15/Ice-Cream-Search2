@@ -34,6 +34,41 @@
           <% end %>
         </tbody>
       </table>
+
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to shop_review_path(review.shop_id, review.id) do %>
+                <%= review.title %>
+              <% end %>
+            </td>
+            <td>
+              <div id="star-rate<%= review.id %>">
+                <script>
+                  $('#star-rate<%= review.id %>').empty();
+                  $('#star-rate<%= review.id %>').raty({
+                    size : 36,
+                    starOff : '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    half : false,
+                    readOnly : true,
+                    score : <%= review.rate %>,
+                  });
+                </script>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
