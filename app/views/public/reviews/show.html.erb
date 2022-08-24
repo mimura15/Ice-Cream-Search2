@@ -15,6 +15,19 @@
 <%= @review.ice_name %>
 <%= @review.price %>円
 <%= @review.feedback %>
+<div id="star-rate<%= @review.id %>">
+  <script>
+    $('#star-rate<%= @review.id %>').empty();
+    $('#star-rate<%= @review.id %>').raty({
+      size : 36,
+      starOff : '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      half : false,
+      readOnly : true,
+      score : <%= @review.rate %>,
+    });
+  </script>
+</div>
 
 <div>
   <% @review.comments.each do |comment| %>

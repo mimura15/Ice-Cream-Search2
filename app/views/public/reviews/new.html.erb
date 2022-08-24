@@ -14,7 +14,20 @@
             </tr>
             <tr>
               <th>評価</th>
-              <td></td>
+              <td>
+                <div class="form-group row" id="star">
+                <%= f.hidden_field :rate, id: :review_star %>
+                <script>
+                  $('#star').raty({
+                    size : 36,
+                    starOff : '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    scoreName: 'review[rate]',
+                    half: false,
+                  });
+                </script>
+                </div>
+              </td>
             </tr>
             <tr>
               <th>食べたアイス</th>
