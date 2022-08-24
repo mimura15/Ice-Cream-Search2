@@ -7,6 +7,11 @@ class Public::CommentsController < ApplicationController
     redirect_to shop_review_path(review, params[:shop_id])
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to shop_review_path(params[:shop_id],params[:review_id])
+  end
+
   private
 
   def comment_params
