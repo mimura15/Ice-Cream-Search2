@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @reviews = Review.where(shop_id:params[:shop_id])
     @shop = Shop.find(params[:shop_id])
