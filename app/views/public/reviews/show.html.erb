@@ -38,9 +38,9 @@
     <% end %>
     <%= comment.user.name %>
     <%= comment.comment %>
-    <!--<% if comment.user == current_user %>-->
-    <!--  <%= link_to "削除", shop_review_comment_path(@shop.id, @review.id), method: :delete %>-->
-    <!--<% end %>-->
+    <% if comment.user == current_user %>
+      <%= link_to "削除", shop_review_comment_path(@shop.id, @review.id, comment.id), method: :delete %>
+    <% end %>
   <% end %>
 </div>
 
