@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @shop = @post.shop
+    @post_tags = @post.tags
   end
 
   def new
@@ -17,7 +18,9 @@ class Public::PostsController < ApplicationController
 
   def create
     post = current_user.posts.build(post_params)
+    tag_list = params[:post][:tag_name].split(nil)
     if post.save
+      post.save_tag(tag_list)
       redirect_to post_path(post)
     else
       render :new
