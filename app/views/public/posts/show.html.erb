@@ -32,6 +32,14 @@
             <th>できごと</th>
             <td><%= @post.content %></td>
           </tr>
+          <tr>
+            <th></th>
+            <td>
+              <% @post_tags.each do |tag| %>
+                <%= tag.tag_name %>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
