@@ -29,6 +29,13 @@
               <th>できごと</th>
               <td><%= f.text_area :content %></td>
             </tr>
+            <tr>
+              <th>
+                タグ<br>
+                スペースを入力し、複数のタグをつける
+              </th>
+              <td><%= f.text_field :tag_name %></td>
+            </tr>
           </tbody>
         </table>
         <div class="actions">

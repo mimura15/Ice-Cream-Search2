@@ -34,6 +34,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(nil)
     if @post.update(post_params)
       if params[:post][:image_ids]
         params[:post][:image_ids].each do |image_id|
@@ -41,6 +42,7 @@ class Public::PostsController < ApplicationController
           image.purge
         end
       end
+      @post.save_tag(tag_list)
       redirect_to post_path(@post.id)
     else
       @shops = Shop.all
