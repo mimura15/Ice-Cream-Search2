@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @posts = Post.all
+    @posts = @posts.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show
