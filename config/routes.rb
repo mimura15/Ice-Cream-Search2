@@ -31,5 +31,8 @@ Rails.application.routes.draw do
       end
     end
     resources :posts
+    resources :tags do
+      get 'posts', to: 'posts#index'
+    end
   end
 end
