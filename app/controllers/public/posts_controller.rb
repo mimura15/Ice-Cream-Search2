@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
+    @tag_list = Tag.all
     if params[:search].present?
       @posts = Post.where('title LIKE ?', "%#{params[:search]}%")
     elsif params[:tag_id].present?
@@ -25,7 +26,7 @@ class Public::PostsController < ApplicationController
 
   def create
     post = current_user.posts.build(post_params)
-    tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(',')
     if post.save
       post.save_tag(tag_list)
       redirect_to post_path(post)
@@ -37,11 +38,12 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @shops = Shop.all
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
       if params[:post][:image_ids]
         params[:post][:image_ids].each do |image_id|

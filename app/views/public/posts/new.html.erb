@@ -23,9 +23,9 @@
             <tr>
               <th>
                 タグ<br>
-                スペースを入力し、複数のタグをつける
+                ,で区切ることで複数タグ登録できます
               </th>
-              <td><%= f.text_field :tag_name %></td>
+              <td><%= f.text_field :tag_name, value: @tag_list %></td>
             </tr>
           </tbody>
         </table>
