@@ -12,6 +12,10 @@ class Shop < ApplicationRecord
   validates :off_day, presence: true
   validates :website, presence: true
 
-  geocoded_by :address
+  geocoded_by :get_address
   after_validation :geocode, if: :address_changed?
+
+  def get_address
+    self.address
+  end
 end
