@@ -10,6 +10,8 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.time :close_time
       t.string :off_day
       t.string :website
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

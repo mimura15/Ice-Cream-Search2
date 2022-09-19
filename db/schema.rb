@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2022_09_07_120602) do
     t.time "close_time"
     t.string "off_day"
     t.string "website"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
