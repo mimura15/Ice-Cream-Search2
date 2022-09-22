@@ -30,7 +30,7 @@
           </tr>
         </tbody>
       </table>
-      投稿を見る
+      <%= link_to "投稿を見る", posts_path(shop_id: @shop.id) %>
       <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
     </div>
 

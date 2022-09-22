@@ -7,6 +7,9 @@ class Public::PostsController < ApplicationController
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @posts = @tag.posts.all
+    elsif params[:shop_id].present?
+      @shop = Shop.find(params[:shop_id])
+      @posts = @shop.posts.all
     else
       @posts = Post.all
     end
