@@ -10,5 +10,30 @@
 <%= @review.price %>
 <%= @review.feedback %>
 <%= @review.created_at.strftime("%Y/%m/%d") %>
+<div id="star-rate<%= @review.id %>">
+  <script>
+    $('#star-rate<%= @review.id %>').empty();
+    $('#star-rate<%= @review.id %>').raty({
+      size : 36,
+      starOff : '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      half : false,
+      readOnly : true,
+      score : <%= @review.rate %>,
+    });
+  </script>
+</div>
+
+<div>
+  <% @review.comments.each do |comment| %>
+    <% if @review.user.image.attached? %>
+      <%= image_tag comment.user.image, size: "50x50" %>
+    <% else %>
+      <%= image_tag 'sweets_icecream', size: "50x50" %>
+    <% end %>
+    <%= comment.user.name %>
+    <%= comment.comment %>
+  <% end %>
+</div>
 
 <%= link_to "レビューの削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "このレビューを削除しますか?" %>

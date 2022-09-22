@@ -2,7 +2,12 @@ class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @reviews = Review.all
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+      @reviews = @user.reviews.all
+    else
+      @reviews = Review.all
+    end
   end
 
   def show
