@@ -1,3 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+// topページ
+#top {
+
+}
+.top-content {
+  text-align: center;
+  margin-top: 10%;
+}
+.top-content p {
+  font-size: 1.125rem;
+  margin: 10px 0 42px;
+}
+.top-title {
+  font-size: 5rem;
+  font-weight: normal;
+}
