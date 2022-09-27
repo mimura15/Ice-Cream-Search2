@@ -1,13 +1,15 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-md-10">
-      <%= image_tag @shop.image, size: "100x100" %>
+    <div class="mb-5 ml-auto mr-auto">
+      <%= image_tag @shop.image, size: "200x200", class: "rounded-circle" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 text-center">
+      <h3 class="mb-5"><%= @shop.name %></h3>
       <table class="table table-borderless">
         <tbody>
-          <tr>
-            <th>店舗名</th>
-            <td><%= @shop.name %></td>
-          </tr>
           <tr>
             <th>住所</th>
             <td><%= @shop.address %></td>
@@ -30,11 +32,15 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "投稿を見る", posts_path(shop_id: @shop.id) %>
-      <%= link_to "レビューを見る", shop_reviews_path(@shop.id) %>
+      <%= link_to posts_path(shop_id: @shop.id) do %>
+        <button class="btn btn-outline-info">投稿</button>
+      <% end %>
+      <%= link_to shop_reviews_path(@shop.id) do %>
+        <button class="btn btn-outline-info">レビュー</button>
+      <% end %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-lg-4 mt-5">
       <script type="text/javascript">
         function initMap() {
          var test ={lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
@@ -65,8 +71,8 @@
                     src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
       </script>
       <style type="text/css">
-        #map { height: 200px;
-               width: 70%;}
+        #map { height: 300px;
+               width: 80%;}
       </style>
       <div id="map"></div>
     </div>
