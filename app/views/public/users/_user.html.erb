@@ -1,10 +1,12 @@
-<% if user.image.attached? %>
-  <%= image_tag user.image, size: "50x50" %>
-<% else %>
-  <%= image_tag 'sweets_icecream', size: "50x50" %>
-<% end %>
+<div class="text-center">
+  <% if user.image.attached? %>
+    <%= image_tag user.image, size: "80x80" %>
+  <% else %>
+    <%= image_tag 'sweets_icecream', size: "80x80" %>
+  <% end %>
+</div>
 
-<table class="table">
+<table class="table text-center">
   <tbody>
     <tr>
       <td>

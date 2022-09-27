@@ -1,6 +1,6 @@
-<div class="container">
+<div class="py-5 container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col">
       <%= form_with model: @post, url: post_path(@post.id) do |f| %>
         <% if @post.images.attached? %>
           <p>選択済みの画像（削除する画像にチェックをつけてください）</p>

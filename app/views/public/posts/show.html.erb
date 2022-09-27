@@ -1,20 +1,27 @@
-<div class="container">
+<div class="py-5 container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-3">
       <%= render 'public/users/user', user: @user %>
-      <% if @user == current_user %>
-        <%= link_to "投稿編集", edit_post_path(@post.id) %>
-        <%= link_to "投稿削除", post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" %>
-      <% end %>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <% if @user == current_user %>
+          <%= link_to edit_post_path(@post.id) do %>
+            <button class="btn btn-success mb-2" type="button">投稿編集</button>
+          <% end %>
+          <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" do %>
+            <button class="btn btn-danger" type="button">投稿削除</button>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-9">
+
+    <div class="col-lg-9 text-center">
       <% if @post.images.attached? %>
         <% @post.images.each do |image| %>
           <%= image_tag image, width: 200, height: 200 %>
         <% end %>
       <% end %>
 
-      <table class="table table-borderless">
+      <table class="table table-borderless mt-5">
         <tbody>
           <tr>
             <th>タイトル</th>
