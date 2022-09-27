@@ -1,19 +1,12 @@
-<div class="container">
+<div class="py-5 container">
   <div class="row">
-    <div class="col-md-6">
-      <h1>投稿</h1>
-      <%= link_to '新規投稿', new_post_path %>
-      <%= form_with url: posts_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
-        <%= f.submit 'Search', name: nil %>
-      <% end %>
+    <div class="col"></div>
+    <div class="col text-center">
+        <h2>POST's</h2>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <% @tag_list.each do |tag| %>
-        <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-        <%= "(#{tag.posts.count})" %>
+    <div class="col text-right">
+      <%= link_to new_post_path do %>
+        <i class="fas fa-pen-nib fa-2x"></i>
       <% end %>
     </div>
   </div>
@@ -21,33 +14,63 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th></th>
-            <th>タイトル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-          <tr>
-            <td>
-              <% if post.images.attached? %>
-                <%= image_tag post.images[0], size: "50x50" %>
-              <% else %>
-                <%= image_tag 'sweets_icecream', size: "50x50" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to post_path(post.id) do %>
-                <%= post.title %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-2">
+      <div class="row mb-5">
+        <h4>Post Search</h4>
+        <%= form_with url: posts_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search %>
+          <%= f.submit 'Search', name: nil %>
+        <% end %>
+      </div>
+      <div class="row">
+        <h4>Tag Search</h4>
+        <% @tag_list.each do |tag| %>
+          <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+          <%= "(#{tag.posts.count})" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-10">
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-lg-4 col-sm-6 mb-3">
+          <div class="mb-2 text-center">
+            <% if post.images.attached? %>
+              <%= image_tag post.images[0], size: "150x150", class: "rounded-circle" %>
+            <% else %>
+              <%= image_tag 'sweets_icecream', size: "150x150", class: "rounded-circle" %>
+            <% end %>
+          </div>
+          <h3 class="text-center">
+            <%= link_to post_path(post.id) do %>
+              <%= post.title %>
+            <% end %>
+          </h3>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-6">-->
+
+<!--      <#%= form_with url: posts_path, method: :get, local: true do |f| %>-->
+<!--        <#%= f.text_field :search %>-->
+<!--        <#%= f.submit 'Search', name: nil %>-->
+<!--      <#% end %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-6">-->
+<!--      <#% @tag_list.each do |tag| %>-->
+<!--        <#%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>-->
+<!--        <#%= "(#{tag.posts.count})" %>-->
+<!--      <#% end %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
