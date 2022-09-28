@@ -8,19 +8,35 @@
             <button class="btn btn-success mb-2" type="button">投稿編集</button>
           <% end %>
           <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" do %>
-            <button class="btn btn-danger" type="button">投稿削除</button>
+            <button class="btn btn-danger mb-2" type="button">投稿削除</button>
           <% end %>
         <% end %>
       </div>
     </div>
 
     <div class="col-lg-9 text-center">
-      <% if @post.images.attached? %>
-        <% @post.images.each do |image| %>
-          <%= image_tag image, width: 200, height: 200 %>
-        <% end %>
-      <% end %>
-
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <% @post.images.first(1).each do |image| %>
+              <%= image_tag image, class: "carousel_image" %>
+            <% end %>
+          </div>
+          <% @post.images.drop(1).each do |image| %>
+            <div class="carousel-item">
+              <%= image_tag image, class: "carousel_image" %>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
       <table class="table table-borderless mt-5">
         <tbody>
           <tr>
