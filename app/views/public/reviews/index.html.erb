@@ -1,37 +1,57 @@
 <div class="py-5 container">
-  <div class="col-lg-6 col-md-8 mx-auto">
-      <h2>Review's</h2>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col text-center">
+      <h2 class>REVIEW's</h2>
       <h3><%= @shop.name %></h3>
+    </div>
+    <div class="col text-right">
+      <%= link_to new_shop_review_path(@shop.id) do %>
+        <i class="fas fa-pen-nib fa-2x"></i>
+      <% end %>
+    </div>
   </div>
-</div><!--py-5 container-->
+</div>
 
+<div class="container">
+  <div class="row">
+    <% @reviews.each do |review|%>
+    <div class="card-border">
+      <div class="card-header bg-transparent">
+        <% if review.user.image.attached? %>
+          <%= image_tag review.user.image, size: "50x50" %>
+        <% else %>
+          <%= image_tag 'sweets_icecream', size: "50x50" %>
+        <% end %>
+        <%= review.user.name %>
+      </div>
+      <div class="card-body text-success">
+        <h5 class="card-title">
+          <%= link_to shop_review_path(review.shop_id, review.id) do %>
+            <%= review.title %>
+          <% end %>
+        </h5>
+        <div class="card-rate">
+          <div id="star-rate<%= review.id %>">
+            <script>
+              $('#star-rate<%= review.id %>').empty();
+              $('#star-rate<%= review.id %>').raty({
+                size : 36,
+                starOff : '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                half : false,
+                readOnly : true,
+                score : <%= review.rate %>,
+              });
+            </script>
+          </div>
+        </div>
+      </div><!--card-body-->
+      <div class="card-footer bg-transparent">
+        コメント<%= "(#{review.comments.count})" %>
+      </div>
+    </div><!--card-border-->
+    <% end %>
+  </div><!--row-->
+</div><!--container-->
 
-<h1><%= @shop.name %></h1>
-
-<% @reviews.each do |review|%>
-  <% if review.user.image.attached? %>
-    <%= image_tag review.user.image, size: "50x50" %>
-  <% else %>
-    <%= image_tag 'sweets_icecream', size: "50x50" %>
-  <% end %>
-
-  <%= review.user.name %>
-  <%= link_to shop_review_path(review.shop_id, review.id) do %>
-    <%= review.title %>
-  <% end %>
-
-  <div id="star-rate<%= review.id %>">
-    <script>
-      $('#star-rate<%= review.id %>').empty();
-      $('#star-rate<%= review.id %>').raty({
-        size : 36,
-        starOff : '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        half : false,
-        readOnly : true,
-        score : <%= review.rate %>,
-      });
-    </script>
-  </div>
-
-<% end %>
