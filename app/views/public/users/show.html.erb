@@ -1,75 +1,76 @@
-<div class="container">
+<div class="py-5 container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= render 'public/users/user', user: @user %>
-      <% if @user == current_user %>
-        <%= link_to "編集", edit_user_path(@user.id) %>
-      <% end %>
+      <div class="d-grid gap-2 text-center">
+        <% if @user == current_user %>
+          <%= link_to edit_user_path(@user.id) do %>
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-user-edit"></i></button>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-md-9">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th></th>
-            <th>タイトル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-          <tr>
-            <td>
-              <% if post.images.attached? %>
-                <%= image_tag post.images[0], size: "50x50" %>
-              <% else %>
-                <%= image_tag 'sweets_icecream', size: "50x50" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to post_path(post.id) do %>
-                <%= post.title %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-md-10">
+      <!--ユーザーの投稿一覧-->
+      <div class="row">
+        <h3 class="mb-3 mx-auto">Post's</h3>
+      </div>
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-lg-3 col-sm-6 mb-3">
+          <div class="mb-2 text-center">
+            <% if post.images.attached? %>
+              <%= image_tag post.images[0], size: "70x70", class: "rounded-circle" %>
+            <% else %>
+              <%= image_tag 'sweets_icecream', size: "70x70", class: "rounded-circle" %>
+            <% end %>
+          </div>
+          <h4 class="text-center">
+            <%= link_to post_path(post.id) do %>
+              <%= post.title %>
+            <% end %>
+          </h4>
+        </div>
+        <% end %>
+      </div>
 
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th>タイトル</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to shop_review_path(review.shop_id, review.id) do %>
-                <%= review.title %>
-              <% end %>
-            </td>
-            <td>
-              <div id="star-rate<%= review.id %>">
-                <script>
-                  $('#star-rate<%= review.id %>').empty();
-                  $('#star-rate<%= review.id %>').raty({
-                    size : 36,
-                    starOff : '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    half : false,
-                    readOnly : true,
-                    score : <%= review.rate %>,
-                  });
-                </script>
+      <!--ユーザーのレビュー一覧-->
+      <div class="row">
+        <h3 class="mb-3 mx-auto">Review's</h3>
+      </div>
+      <div class="row">
+        <% @reviews.each do |review| %>
+        <div class="col-lg-3 col-sm-6 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= link_to shop_review_path(review.shop_id, review.id) do %>
+                  <%= review.title %>
+                <% end %>
+              </h4>
+              <h5 class="card-text"><%= review.shop.name %></h5>
+              <div class="card-reviwes">
+                <div id="star-rate<%= review.id %>">
+                  <script>
+                    $('#star-rate<%= review.id %>').empty();
+                    $('#star-rate<%= review.id %>').raty({
+                      size : 36,
+                      starOff : '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      half : false,
+                      readOnly : true,
+                      score : <%= review.rate %>,
+                    });
+                  </script>
+                </div>
               </div>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
 
+    </div><!--col-md-10-->
+  </div><!--row-->
+</div><!--py-5 container-->
