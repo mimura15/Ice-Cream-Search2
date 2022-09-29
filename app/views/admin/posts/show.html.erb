@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image, size: "50x50" %>
-      <% else %>
-        <%= image_tag 'sweets_icecream', size: "50x50" %>
-      <% end %>
+    <div class="col-lg-4">
+      <div class="text-center">
+        <% if @user.image.attached? %>
+          <%= image_tag @user.image, size: "50x50" %>
+        <% else %>
+          <%= image_tag 'sweets_icecream', size: "50x50" %>
+        <% end %>
+      </div>
 
-      <table class="table">
+      <table class="table text-center">
         <tbody>
           <tr>
             <td>
@@ -23,17 +25,19 @@
       </table>
     </div>
 
-    <div class="col-md-9">
-      <% if @post.images.attached? %>
-        <% @post.images.each do |image| %>
-          <%= image_tag image, width: 200, height: 200 %>
+    <div class="col-lg-8">
+      <div class="mb-3">
+        <% if @post.images.attached? %>
+          <% @post.images.each do |image| %>
+            <%= image_tag image, width: 200, height: 200 %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
 
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <th>タイトル</th>
+            <th style="width: 30%">タイトル</th>
             <td><%= @post.title %></td>
           </tr>
           <tr>
