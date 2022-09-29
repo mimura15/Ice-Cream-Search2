@@ -1,82 +1,80 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col">
-      <h3><%= @shop.name %></h3>
-    </div>
-    <div class="col"></div>
-    <div class="col text-right">
-      <% if @review.user == current_user %>
-        <%= link_to edit_shop_review_path(@review.shop.id, @review.id) do %>
-          <button class="btn btn-success" type="button">レビュー編集</button>
-        <% end %>
-        <%= link_to shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "このレビューを削除しますか？" do %>
-          <button class="btn btn-danger" type="button">レビュー削除</button>
-        <% end %>
-      <% end %>
-    </div>
+<div class="row mb-5">
+  <div class="col">
+    <h3><%= @shop.name %></h3>
   </div>
-</div><!--py-5 container-->
+  <div class="col"></div>
+  <div class="col text-right">
+    <% if @review.user == current_user %>
+      <%= link_to edit_shop_review_path(@review.shop.id, @review.id) do %>
+        <button class="btn btn-success" type="button">レビュー編集</button>
+      <% end %>
+      <%= link_to shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "このレビューを削除しますか？" do %>
+        <button class="btn btn-danger" type="button">レビュー削除</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<div class="container">
-  <div class="row">
-    <div class="card-border mx-auto">
-      <div class="card-header bg-transparent">
-        <% if @review.user.image.attached? %>
-          <%= image_tag @review.user.image, size: "50x50" %>
-        <% else %>
-          <%= image_tag 'sweets_icecream', size: "50x50" %>
-        <% end %>
-        <%= @review.user.name %>
-        <div id="star-rate<%= @review.id %>">
-          <script>
-            $('#star-rate<%= @review.id %>').empty();
-            $('#star-rate<%= @review.id %>').raty({
-              size : 36,
-              starOff : '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              half : false,
-              readOnly : true,
-              score : <%= @review.rate %>,
-            });
-          </script>
-        </div>
-      </div><!--card-header-->
-      <div class="card-body">
-        <div class="card-title">
-          <%= @review.title %>
-        </div>
-        <p class="card-text">
-          食べたアイス：<%= @review.ice_name %><br>
-          値段：<%= @review.price %>円<br>
-          <%= @review.feedback %>
-        </p>
-      </div><!--card-body-->
-    </div><!--card-border-->
-  </div><!--row-->
-  <div class="row">
-    <div class="mx-auto">
-      <% @review.comments.each do |comment| %>
-        <% if @review.user.image.attached? %>
-          <%= image_tag comment.user.image, size: "50x50" %>
-        <% else %>
-          <%= image_tag 'sweets_icecream', size: "50x50" %>
-        <% end %>
-        <%= comment.user.name %>
-        <%= comment.comment %>
-        <% if comment.user == current_user %>
-          <%= link_to "削除", shop_review_comment_path(@shop.id, @review.id, comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？" %>
-        <% end %>
+<div class="col-lg-8 col-sm-10 container">
+  <!--レビュー本体-->
+  <div class="card-border mx-auto">
+    <div class="card-header bg-transparent">
+      <% if @review.user.image.attached? %>
+        <%= image_tag @review.user.image, size: "50x50" %>
+      <% else %>
+        <%= image_tag 'sweets_icecream', size: "50x50" %>
       <% end %>
-    </div>
+      <%= @review.user.name %>
+      <div id="star-rate<%= @review.id %>">
+        <script>
+          $('#star-rate<%= @review.id %>').empty();
+          $('#star-rate<%= @review.id %>').raty({
+            size : 36,
+            starOff : '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            half : false,
+            readOnly : true,
+            score : <%= @review.rate %>,
+          });
+        </script>
+      </div>
+    </div><!--card-header-->
+    <div class="card-body">
+      <div class="card-title">
+        <%= @review.title %>
+      </div>
+      <p class="card-text">
+        食べたアイス：<%= @review.ice_name %><br>
+        値段：<%= @review.price %>円<br>
+        <%= @review.feedback %>
+      </p>
+    </div><!--card-body-->
+  </div><!--card-border-->
+
+  <!--レビューコメント-->
+  <div class="mx-auto">
+    <% @review.comments.each do |comment| %>
+      <% if @review.user.image.attached? %>
+        <%= image_tag comment.user.image, size: "50x50" %>
+      <% else %>
+        <%= image_tag 'sweets_icecream', size: "50x50" %>
+      <% end %>
+      <%= comment.user.name %>
+      <%= comment.comment %>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", shop_review_comment_path(@shop.id, @review.id, comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？" %>
+      <% end %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="mx-auto">
-      <%= form_with model: [@review, @comment], url: shop_review_comments_path(@shop.id, @review.id) do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.submit "送信" %>
-      <% end %>
-    </div>
-  </div><!--row-->
+
+  <!--新規コメント-->
+  <div class="mx-auto">
+    <%= form_with model: [@review, @comment], url: shop_review_comments_path(@shop.id, @review.id) do |f| %>
+      <%= f.text_area :comment %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+
 </div><!--container-->
 
 

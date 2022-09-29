@@ -1,35 +1,33 @@
-<div class="py-5 container">
-  <div class="col-lg-8 col-sm-10 mx-auto">
-    <h2 class="text-center mb-5">ユーザー一覧</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ユーザーID</th>
-            <th>ユーザーネーム</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-          <tr>
-            <th><%= user.id %></th>
-            <th>
-              <%= link_to admin_user_path(user.id), class: "text-dark" do %>
-                <%= user.name %>
-              <% end %>
-            </th>
-            <th><%= user.email %></th>
-            <th>
-              <% if user.is_active %>
-                退会
-              <% else %>
-                有効
-              <% end %>
-            </th>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-  </div><!--col-lg-8-->
-</div><!--container-->
+<div class="col-lg-8 col-sm-10 mx-auto">
+  <h2 class="text-center mb-5">ユーザー一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ユーザーID</th>
+          <th>ユーザーネーム</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <th><%= user.id %></th>
+          <th>
+            <%= link_to admin_user_path(user.id), class: "text-dark" do %>
+              <%= user.name %>
+            <% end %>
+          </th>
+          <th><%= user.email %></th>
+          <th>
+            <% if user.is_active %>
+              退会
+            <% else %>
+              有効
+            <% end %>
+          </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div><!--col-lg-8-->

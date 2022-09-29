@@ -1,53 +1,49 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col-lg-8 col-sm-10 mx-auto">
-      <%= form_with model: [@shop, @review], url: shop_reviews_path do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th>店舗</th>
-              <td><%= @shop.name %></td>
-            </tr>
-            <tr>
-              <th>タイトル</th>
-              <td><%= f.text_field :title %></td>
-            </tr>
-            <tr>
-              <th>評価</th>
-              <td>
-                <div class="form-group row" id="star">
-                <%= f.hidden_field :rate, id: :review_star %>
-                <script>
-                  $('#star').raty({
-                    size : 36,
-                    starOff : '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    scoreName: 'review[rate]',
-                    half: false,
-                  });
-                </script>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th>食べたアイス</th>
-              <td><%= f.text_field :ice_name %></td>
-            </tr>
-            <tr>
-              <th>値段</th>
-              <td><%= f.text_field :price %>円</td>
-            </tr>
-            <tr>
-              <th>レビュー</th>
-              <td><%= f.text_area :feedback %></td>
-            </tr>
-          </tbody>
-        </table>
-        <%= f.hidden_field :shop_id, :value => @shop.id %>
-        <div class="actions">
-          <%= f.submit 'レビューする' %>
-        </div>
-      <% end %>
+<div class="col-lg-8 col-sm-10 mx-auto">
+  <%= form_with model: [@shop, @review], url: shop_reviews_path do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>店舗</th>
+          <td><%= @shop.name %></td>
+        </tr>
+        <tr>
+          <th>タイトル</th>
+          <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+          <th>評価</th>
+          <td>
+            <div class="form-group row" id="star">
+            <%= f.hidden_field :rate, id: :review_star %>
+            <script>
+              $('#star').raty({
+                size : 36,
+                starOff : '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                scoreName: 'review[rate]',
+                half: false,
+              });
+            </script>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>食べたアイス</th>
+          <td><%= f.text_field :ice_name %></td>
+        </tr>
+        <tr>
+          <th>値段</th>
+          <td><%= f.text_field :price %>円</td>
+        </tr>
+        <tr>
+          <th>レビュー</th>
+          <td><%= f.text_area :feedback %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.hidden_field :shop_id, :value => @shop.id %>
+    <div class="actions">
+      <%= f.submit 'レビューする' %>
     </div>
-  </div>
+  <% end %>
 </div>

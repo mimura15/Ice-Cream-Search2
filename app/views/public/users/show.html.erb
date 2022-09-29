@@ -1,4 +1,4 @@
-<div class="py-5 container">
+
   <div class="row">
     <div class="col-md-2">
       <%= render 'public/users/user', user: @user %>
@@ -14,9 +14,9 @@
     <div class="col-md-10">
       <!--ユーザーの投稿一覧-->
       <div class="row">
-        <h3 class="mb-3 mx-auto">Post's</h3>
+        <h3 class="mb-5 mx-auto">Post's</h3>
       </div>
-      <div class="row">
+      <div class="row mb-5">
         <% @posts.each do |post| %>
         <div class="col-lg-3 col-sm-6 mb-3">
           <div class="mb-2 text-center">
@@ -37,7 +37,7 @@
 
       <!--ユーザーのレビュー一覧-->
       <div class="row">
-        <h3 class="mb-3 mx-auto">Review's</h3>
+        <h3 class="mb-5 mx-auto">Review's</h3>
       </div>
       <div class="row">
         <% @reviews.each do |review| %>
@@ -73,4 +73,4 @@
 
     </div><!--col-md-10-->
   </div><!--row-->
-</div><!--py-5 container-->
+

@@ -1,82 +1,82 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="mb-5 ml-auto mr-auto">
-      <%= image_tag @shop.image, size: "200x200", class: "rounded-circle" %>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-8 text-center">
-      <h3 class="mb-5"><%= @shop.name %></h3>
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th>住所</th>
-            <td><%= @shop.address %></td>
-          </tr>
-          <tr>
-            <th>電話番号(FAX)</th>
-            <td><%= @shop.telepone %>(<%= @shop.facsimile %>)</td>
-          </tr>
-          <tr>
-            <th>営業時間</th>
-            <td><%= @shop.open_time.strftime("%H:%M") %> ~ <%= @shop.close_time.strftime("%H:%M") %></td>
-          </tr>
-          <tr>
-            <th>店休日</th>
-            <td><%= @shop.off_day %></td>
-          </tr>
-          <tr>
-            <th>HP</th>
-            <td><%= @shop.website %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="mt-2 md-2">
-      <%= link_to posts_path(shop_id: @shop.id) do %>
-        <button class="btn btn-outline-info">投稿</button>
-      <% end %>
-      <%= link_to shop_reviews_path(@shop.id) do %>
-        <button class="btn btn-outline-info">レビュー</button>
-      <% end %>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mt-5">
-      <script type="text/javascript">
-        function initMap() {
-         var test ={lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
-          var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
-                    center: test
-                    });
-          var transitLayer = new google.maps.TransitLayer();
-          transitLayer.setMap(map);
-
-          var contentString = '住所: <%#= @shop.address %>';
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-
-          var marker = new google.maps.Marker({
-                        position: test,
-                        map: map,
-                        title: contentString
-                        });
-
-          marker.addListener('click', function(){
-            infowindow.open(map, marker);
-          });
-         }
-      </script>
-      <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-      </script>
-      <style type="text/css">
-        #map { height: 300px;
-               }
-      </style>
-      <div id="map"></div>
-    </div>
+<div class="text-center">
+  <div class="mb-5 ml-auto mr-auto">
+    <%= image_tag @shop.image, size: "200x200", class: "rounded-circle" %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-lg-8 text-center">
+    <h3 class="mb-5"><%= @shop.name %></h3>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>住所</th>
+          <td><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号(FAX)</th>
+          <td><%= @shop.telepone %>(<%= @shop.facsimile %>)</td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @shop.open_time.strftime("%H:%M") %> ~ <%= @shop.close_time.strftime("%H:%M") %></td>
+        </tr>
+        <tr>
+          <th>店休日</th>
+          <td><%= @shop.off_day %></td>
+        </tr>
+        <tr>
+          <th>HP</th>
+          <td><%= @shop.website %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-2 md-2">
+    <%= link_to posts_path(shop_id: @shop.id) do %>
+      <button class="btn btn-outline-info">投稿</button>
+    <% end %>
+    <%= link_to shop_reviews_path(@shop.id) do %>
+      <button class="btn btn-outline-info">レビュー</button>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-4 mt-5">
+    <script type="text/javascript">
+      function initMap() {
+       var test ={lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: test
+                  });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所: <%#= @shop.address %>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+                      position: test,
+                      map: map,
+                      title: contentString
+                      });
+
+        marker.addListener('click', function(){
+          infowindow.open(map, marker);
+        });
+       }
+    </script>
+    <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+    </script>
+    <style type="text/css">
+      #map { height: 300px;
+             }
+    </style>
+    <div id="map"></div>
+  </div>
+</div>
+

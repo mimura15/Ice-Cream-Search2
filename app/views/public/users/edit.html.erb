@@ -1,33 +1,31 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col-lg-8 col-sm-10 mx-auto">
-      <%= form_with model: @user, url: user_path(@user.id) do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th>ユーザー画像</th>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
-            </tr>
-            <tr>
-              <th><%= f.label :name, "ユーザーネーム" %></th>
-              <td><%= f.text_field :name, size: 20 %></td>
-            </tr>
-            <tr>
-              <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.text_field :email %></td>
-            </tr>
-            <tr>
-              <th><%= f.label :message, "メッセージ" %></th>
-              <td><%= f.text_field :message %></td>
-            </tr>
-          </tbody>
-        </table>
 
-        <div class="actions">
-          <%= f.submit '変更を保存する' %>
-          <%= link_to "退会する", unsubscribe_users_path %>
-        </div>
-      <% end %>
+
+<div class="col-lg-8 col-sm-10 mx-auto">
+  <%= form_with model: @user, url: user_path(@user.id) do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>ユーザー画像</th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :name, "ユーザーネーム" %></th>
+          <td><%= f.text_field :name, size: 20 %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :email, "メールアドレス" %></th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :message, "メッセージ" %></th>
+          <td><%= f.text_field :message %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <%= f.submit '変更を保存する' %>
+      <%= link_to "退会する", unsubscribe_users_path %>
     </div>
-  </div>
+  <% end %>
 </div>

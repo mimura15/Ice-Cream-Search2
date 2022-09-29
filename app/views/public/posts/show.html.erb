@@ -1,70 +1,69 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col-lg-3">
-      <%= render 'public/users/user', user: @user %>
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <% if @user == current_user %>
-          <%= link_to edit_post_path(@post.id) do %>
-            <button class="btn btn-success mb-2" type="button">投稿編集</button>
-          <% end %>
-          <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" do %>
-            <button class="btn btn-danger mb-2" type="button">投稿削除</button>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="col-lg-9 text-center">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <% @post.images.first(1).each do |image| %>
-              <%= image_tag image, class: "carousel_image" %>
-            <% end %>
-          </div>
-          <% @post.images.drop(1).each do |image| %>
-            <div class="carousel-item">
-              <%= image_tag image, class: "carousel_image" %>
-            </div>
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'public/users/user', user: @user %>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <% if @user == current_user %>
+        <%= link_to edit_post_path(@post.id) do %>
+          <button class="btn btn-success mb-2" type="button">投稿編集</button>
+        <% end %>
+        <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" do %>
+          <button class="btn btn-danger mb-2" type="button">投稿削除</button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-9 text-center">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <% @post.images.first(1).each do |image| %>
+            <%= image_tag image, class: "carousel_image" %>
           <% end %>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <% @post.images.drop(1).each do |image| %>
+          <div class="carousel-item">
+            <%= image_tag image, class: "carousel_image" %>
+          </div>
+        <% end %>
       </div>
-      <table class="table table-borderless mt-5">
-        <tbody>
-          <tr>
-            <th>タイトル</th>
-            <td><%= @post.title %></td>
-          </tr>
-          <tr>
-            <th>近くの店舗</th>
-            <td>
-              <%= link_to shop_path(@shop.id) do %>
-                <%= @post.shop.name %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>できごと</th>
-            <td><%= @post.content %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td>
-              <% @post_tags.each do |tag| %>
-                <%= tag.tag_name %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
+    <table class="table table-borderless mt-5">
+      <tbody>
+        <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>近くの店舗</th>
+          <td>
+            <%= link_to shop_path(@shop.id) do %>
+              <%= @post.shop.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>できごと</th>
+          <td><%= @post.content %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <% @post_tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

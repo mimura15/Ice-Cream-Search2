@@ -1,23 +1,18 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col-lg-10 col-sm-12 mx-auto">
-      <h2 class="text-center mb-5">本当に退会しますか？</h2>
-      <h4 class="text-center mb-3">
-        退会すると、今までの投稿やレビューが消えますがよろしいですか？<br>
-        よろしければ下の退会するボタンをクリックしてください
-      </h4>
+<div class="col-lg-10 col-sm-12 mx-auto">
+  <h2 class="text-center mb-5">本当に退会しますか？</h2>
+  <h4 class="text-center mb-5">
+    退会すると、今までの投稿やレビューが消えますがよろしいですか？<br>
+    よろしければ下の退会するボタンをクリックしてください
+  </h4>
 
-      <div class="actions text-center ">
-        <div class="d-grid gap-2 mx-auto mt-5">
-          <%= link_to user_path(@user) do %>
-            <button class="btn btn-success" type="button">退会しない</button>
-          <% end %>
-          <%= link_to withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか?"} do %>
-            <button class="btn btn-danger" type="button">退会する</button>
-          <% end %>
-        </div>
-      </div>
+  <div class="actions text-center ">
+    <div class="d-grid gap-2 mx-auto mt-5">
+      <%= link_to user_path(@user) do %>
+        <button class="btn btn-success" type="button">退会しない</button>
+      <% end %>
+      <%= link_to withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか?"} do %>
+        <button class="btn btn-danger" type="button">退会する</button>
+      <% end %>
     </div>
   </div>
 </div>
-

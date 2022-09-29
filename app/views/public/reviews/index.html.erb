@@ -1,19 +1,18 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col text-center">
-      <h2 class>REVIEW's</h2>
-      <h3><%= @shop.name %></h3>
-    </div>
-    <div class="col text-right">
-      <%= link_to new_shop_review_path(@shop.id) do %>
-        <i class="fas fa-pen-nib fa-2x"></i>
-      <% end %>
-    </div>
+<div class="row mb-5">
+  <div class="col"></div>
+  <div class="col text-center">
+    <h2 class>REVIEW's</h2>
+    <h3><%= @shop.name %></h3>
+  </div>
+  <div class="col text-right">
+    <%= link_to new_shop_review_path(@shop.id) do %>
+      <i class="fas fa-pen-nib fa-2x"></i>
+    <% end %>
   </div>
 </div>
 
-<div class="container">
+
+<div class="col-lg-8 col-sm-10 mx-auto">
   <!--<div class="row">-->
     <% @reviews.each do |review|%>
     <div class="card-border">
@@ -52,6 +51,6 @@
       </div>
     </div><!--card-border-->
     <% end %>
-  <!--</div><!--row-->-->
+  <!--</div><!--row-->
 </div><!--container-->
 
