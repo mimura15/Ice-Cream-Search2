@@ -13,19 +13,15 @@
 
   <body>
     <div class="wrapper">
-      <header>
+      <header class="fixed-top" style="height:200px; background-color:#ffffff;">
         <!--ヘッダー画像-->
         <nav class="navbar navbar-light justify-content-center">
           <a class="" href="/"><%= image_tag 'logo2.png' %></a>
         </nav>
 
         <!--ヘッダーメニュー-->
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand" style="background-color:#fecf8d;">
           <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavdropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav w-50 nav-justified ml-auto mr-auto">
                 <% if user_signed_in? %>
                   <li class="nav-item">
@@ -77,6 +73,7 @@
       </header>
 
       <main>
+        <div style="margin-top:200px;"></div>
         <div class="py-5 container"><%= yield %></div>
       </main>
 
