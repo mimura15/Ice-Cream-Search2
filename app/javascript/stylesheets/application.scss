@@ -1,7 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+// google font
 @import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@1,600&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=Mali:ital,wght@1,600&family=Potta+One&family=Righteous&display=swap');
 
 .nav-item {
   font-family: 'Mali', cursive;
@@ -20,4 +22,20 @@
 	min-height: 100vh;
 	box-sizing: border-box;
 	padding-bottom: 30px;
+}
+
+.title	{
+	font-family: 'Mali', cursive;
+  font-family: 'Righteous', cursive;
+}
+
+.btnx-outline-orange{
+  color: var(--bs-orange); background:var(--bs-white); border: 2px solid #FFCC80;
+}
+
+.btn- {
+	font-family: 'Kiwi Maru', serif;
+	font-family: 'Mali', cursive;
+	font-family: 'Potta One', cursive;
+	font-family: 'Righteous', cursive;
 }

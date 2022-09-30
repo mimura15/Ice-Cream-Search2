@@ -1,5 +1,5 @@
 <div class="text-center mb-5">
-    <h2>SHOP's</h2>
+    <h2 class="title">SHOP's</h2>
 </div>
 
 
@@ -9,7 +9,7 @@
       <div class="col-lg-3 col-sm-6 mb-3">
         <div class="mb-4 text-center"><%= image_tag shop.image, size: "200x200", class: "rounded-circle" %></div>
         <h3 class="text-center">
-          <%= link_to shop_path(shop.id) do %>
+          <%= link_to shop_path(shop.id), class: "text-dark" do %>
             <%= shop.name %>
           <% end %>
         </h3>
