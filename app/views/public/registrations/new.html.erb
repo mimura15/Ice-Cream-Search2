@@ -1,33 +1,33 @@
 <div class="text-center">
-  <h2 class="mb-3">SIGN UP</h2>
+  <h2 class="title mb-3">SIGN UP</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <div class="field mb-2">
       <%= f.label :name, "ユーザーネーム" %><br />
       <%= f.text_field :name %>
     </div>
 
-    <div class="field">
+    <div class="field mb-2">
       <%= f.label :email, "メールアドレス" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field">
+    <div class="field mb-2">
       <%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> 字以上)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <div class="field">
+    <div class="field mb-2">
       <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="actions mt-2">
-      <%= f.submit "新規登録" %>
+    <div class="actions mb-2">
+      <%= f.submit "新規登録", class: "btn btn-primary" %>
     </div>
   <% end %>
 

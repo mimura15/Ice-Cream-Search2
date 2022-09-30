@@ -1,10 +1,10 @@
 <div class="row mb-5">
   <div class="col"></div>
   <div class="col text-center">
-      <h2>POST's</h2>
+      <h2 class="title">POST's</h2>
   </div>
   <div class="col text-right">
-    <%= link_to new_post_path do %>
+    <%= link_to new_post_path, class: "text-dark" do %>
       <i class="fas fa-pen-nib fa-2x"></i>
     <% end %>
   </div>
@@ -15,17 +15,17 @@
   <div class="row">
     <div class="col-3">
       <div class="row mb-5">
-        <h4>Post Search</h4>
+        <h4 class="title">Post Search</h4>
         <%= form_with url: posts_path, method: :get, local: true do |f| %>
           <%= f.text_field :search %>
           <%= f.submit 'Search', name: nil %>
         <% end %>
       </div>
       <div class="row">
-        <h4>Tag Search</h4>
+        <h4 class="title">Tag Search</h4>
         <div>
           <% @tag_list.each do |tag| %>
-            <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+            <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id), class: "text-dark" %>
             <%= "(#{tag.posts.count})" %>
           <% end %>
         </div>
@@ -44,7 +44,7 @@
             <% end %>
           </div>
           <h3 class="text-center">
-            <%= link_to post_path(post.id) do %>
+            <%= link_to post_path(post.id), class: "text-dark" do %>
               <%= post.title %>
             <% end %>
           </h3>
