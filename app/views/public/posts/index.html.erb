@@ -23,10 +23,12 @@
       </div>
       <div class="row">
         <h4>Tag Search</h4>
-        <% @tag_list.each do |tag| %>
-          <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-          <%= "(#{tag.posts.count})" %>
-        <% end %>
+        <div>
+          <% @tag_list.each do |tag| %>
+            <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+            <%= "(#{tag.posts.count})" %>
+          <% end %>
+        </div>
       </div>
     </div>
 

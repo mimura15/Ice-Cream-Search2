@@ -1,4 +1,23 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@1,600&family=Righteous&display=swap');
 
+.nav-item {
+  font-family: 'Mali', cursive;
+  font-family: 'Righteous', cursive;
+}
+
+.footer {
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	margin-top: auto;
+}
+
+.main{
+	position: relative;
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding-bottom: 30px;
+}
