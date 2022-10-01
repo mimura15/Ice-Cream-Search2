@@ -1,4 +1,8 @@
 <div class="col-lg-8 col-sm-10 mx-auto">
+  <div class="text-center mb-5">
+    <h2>店舗登録</h2>
+  </div>
+
   <%= form_with model: [:admin, @shop]  do |f| %>
     <table class="table table-borderless">
       <tbody>
@@ -41,7 +45,7 @@
       </tbody>
     </table>
     <div class="actions text-center">
-      <%= f.submit '新規登録' %>
+      <%= f.submit '新規登録', class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

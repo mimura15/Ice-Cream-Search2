@@ -1,59 +1,56 @@
-<div class="py-5 container">
-  <div class="row">
-    <div class="col">
-      <div class="mb-4 text-center">
-        <% if @user.image.attached? %>
-          <%= image_tag @user.image, size: "250x250" %>
-        <% else %>
-          <%= image_tag 'sweets_icecream', size: "250x250" %>
-        <% end %>
-      </div><!--mb-4-->
-    </div>
-
-    <div class="col">
-      <table class="table table-borderless mx-auto">
-          <tbody>
-            <tr>
-              <th>ユーザーID</th>
-              <td><%= @user.id %></td>
-            </tr>
-            <tr>
-              <th>ユーザーネーム</th>
-              <td><%= @user.name %></td>
-            </tr>
-            <tr>
-              <th>メールアドレス</th>
-              <td><%= @user.email %></td>
-            </tr>
-            <tr>
-              <th>メッセージ</th>
-              <td><%= @user.message %></td>
-            </tr>
-            <tr>
-              <th>ステータス</th>
-              <td>
-                <% if @user.is_active %>
-                  退会
-                <% else %>
-                  有効
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-    </div><!--col-->
-  </div><!--row-->
-
-  <div class="row mt-5 text-center">
-    <div class="col">
-      <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-outline-success w-100" %>
-    </div>
-    <div class="col">
-      <%= link_to "投稿履歴一覧", admin_posts_path(user_id: @user.id), class: "btn btn-outline-success w-100" %>
-    </div>
-    <div class="col">
-      <%= link_to "レビュー一覧", admin_reviews_path(user_id: @user.id), class: "btn btn-outline-success w-100" %>
-    </div>
+<div class="row">
+  <div class="col">
+    <div class="mb-4 text-center">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "250x250" %>
+      <% else %>
+        <%= image_tag 'sweets_icecream', size: "250x250" %>
+      <% end %>
+    </div><!--mb-4-->
   </div>
-</div><!--py-5 container-->
 
+  <div class="col">
+    <table class="table table-borderless mx-auto">
+        <tbody>
+          <tr>
+            <th>ユーザーID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>ユーザーネーム</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>メッセージ</th>
+            <td><%= @user.message %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td>
+              <% if @user.is_active %>
+                退会
+              <% else %>
+                有効
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div><!--col-->
+</div><!--row-->
+
+<div class="row mt-5 text-center">
+  <div class="col">
+    <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success w-100" %>
+  </div>
+  <div class="col">
+    <%= link_to "投稿履歴一覧", admin_posts_path(user_id: @user.id), class: "btn btn-success w-100" %>
+  </div>
+  <div class="col">
+    <%= link_to "レビュー一覧", admin_reviews_path(user_id: @user.id), class: "btn btn-success w-100" %>
+  </div>
+</div>

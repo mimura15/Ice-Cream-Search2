@@ -35,7 +35,7 @@
     <div class="col-9">
       <div class="row">
         <% @posts.each do |post| %>
-        <div class="col-lg-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-6 mb-4">
           <div class="mb-2 text-center">
             <% if post.images.attached? %>
               <%= image_tag post.images[0], size: "150x150", class: "rounded-circle" %>

@@ -1,3 +1,7 @@
+<div class="text-center mb-5">
+  <h2>店舗詳細</h2>
+</div>
+
 <div class="row">
   <div class="col text-center">
     <%= image_tag @shop.image, size: "300x300" %><br>
@@ -36,5 +40,5 @@
 </div>
 
 <div class="col-lg-8 col-sm-10 mt-5 mx-auto">
-  <%= link_to "編集する", edit_admin_shop_path(@shop.id), class: "btn btn-outline-success w-100 btn-lg" %>
+  <%= link_to "編集する", edit_admin_shop_path(@shop.id), class: "btn btn-success w-100 btn-lg" %>
 </div>

@@ -1,6 +1,10 @@
+<div class="text-center mb-5">
+  <h2>レビュー詳細</h2>
+</div>
+
 <div class="col-lg-8 col-sm-10 container">
   <!--レビュー本体-->
-  <div class="card-border mx-auto">
+  <div class="card mx-auto　mb-3">
     <div class="card-header bg-transparent">
       <% if @review.user.image.attached? %>
         <%= image_tag @review.user.image, size: "50x50" %>
@@ -35,7 +39,7 @@
   </div><!--card-border-->
 
   <!--レビューコメント-->
-  <div class="mx-auto">
+  <div class="mx-auto mt-3 mb-3">
     <% @review.comments.each do |comment| %>
       <% if @review.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
@@ -48,4 +52,4 @@
   </div>
 
 
-<%= link_to "レビューの削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "このレビューを削除しますか?" %>
+<%= link_to "レビューの削除", admin_review_path(@review.id), method: :delete, "data-confirm" => "このレビューを削除しますか?", class: "btn btn-danger btn-block" %>

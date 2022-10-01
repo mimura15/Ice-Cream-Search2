@@ -17,7 +17,7 @@
       <% @reviews.each do |review| %>
       <tr>
         <td>
-          <%= link_to admin_review_path(review.id) do %>
+          <%= link_to admin_review_path(review.id), class: "text-dark" do %>
             <%= review.id %>
           <% end %>
         </td>

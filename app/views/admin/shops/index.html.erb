@@ -2,7 +2,7 @@
   <div class="col"></div>
   <div class="col text-center"><h2>店舗一覧</h2></div>
   <div class="col text-right">
-    <%= link_to new_admin_shop_path, class: "btn btn-outline-success" do %>
+    <%= link_to new_admin_shop_path, class: "btn btn-success" do %>
       <i class="fas fa-store"></i><i class="fas fa-plus"></i>
     <% end %>
   </div>
@@ -23,7 +23,7 @@
       <tr>
         <td><%= shop.created_at.strftime("%Y/%m/%d") %></td>
         <td>
-          <%= link_to admin_shop_path(shop.id) do %>
+          <%= link_to admin_shop_path(shop.id), class: "text-dark" do %>
             <%= shop.name %>
           <% end %>
         </td>
