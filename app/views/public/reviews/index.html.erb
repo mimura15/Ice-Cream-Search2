@@ -1,11 +1,11 @@
 <div class="row mb-5">
   <div class="col"></div>
   <div class="col text-center">
-    <h2 class>REVIEW's</h2>
+    <h2 class="title mb-2">REVIEW's</h2>
     <h3><%= @shop.name %></h3>
   </div>
   <div class="col text-right">
-    <%= link_to new_shop_review_path(@shop.id) do %>
+    <%= link_to new_shop_review_path(@shop.id), class: "text-dark" do %>
       <i class="fas fa-pen-nib fa-2x"></i>
     <% end %>
   </div>
@@ -15,7 +15,7 @@
 <div class="col-lg-8 col-sm-10 mx-auto">
   <!--<div class="row">-->
     <% @reviews.each do |review|%>
-    <div class="card-border">
+    <div class="card mb-2">
       <div class="card-header bg-transparent">
         <% if review.user.image.attached? %>
           <%= image_tag review.user.image, size: "50x50" %>
@@ -26,7 +26,7 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">
-          <%= link_to shop_review_path(review.shop_id, review.id) do %>
+          <%= link_to shop_review_path(review.shop_id, review.id), class: "text-dark" do %>
             <%= review.title %>
           <% end %>
         </h5>
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div><!--card-body-->
-      <div class="card-footer bg-transparent">
+      <div class="card-footer bg-transparent text-right">
         コメント<%= "(#{review.comments.count})" %>
       </div>
     </div><!--card-border-->

@@ -1,9 +1,9 @@
 <div class="col-lg-8 col-sm-10 mx-auto">
   <%= form_with model: [@shop, @review], url: shop_reviews_path do |f| %>
-    <table class="table table-borderless">
+    <table class="table table-borderless mb-3">
       <tbody>
         <tr>
-          <th>店舗</th>
+          <th style="width: 50%">店舗</th>
           <td><%= @shop.name %></td>
         </tr>
         <tr>
@@ -42,8 +42,8 @@
       </tbody>
     </table>
     <%= f.hidden_field :shop_id, :value => @shop.id %>
-    <div class="actions">
-      <%= f.submit 'レビューする' %>
+    <div class="actions text-center">
+      <%= f.submit 'レビューする', class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

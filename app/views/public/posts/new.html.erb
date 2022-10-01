@@ -1,9 +1,9 @@
 <div class="col-lg-8 col-sm-10 mx-auto">
   <%= form_with model: @post, url: posts_path do |f| %>
-    <table class="table table-borderless">
+    <table class="table table-borderless mb-3">
       <tbody>
         <tr>
-          <th>投稿画像</th>
+          <th style="width: 50%">投稿画像</th>
           <td><%= f.file_field :images, multiple: true %></td>
         </tr>
         <tr>
@@ -21,14 +21,14 @@
         <tr>
           <th>
             タグ<br>
-            ,で区切ることで複数タグ登録できます
+            ","で区切ることで複数タグ登録できます
           </th>
           <td><%= f.text_field :tag_name, value: @tag_list %></td>
         </tr>
       </tbody>
     </table>
-    <div class="actions">
-      <%= f.submit '新規投稿する' %>
+    <div class="actions text-center">
+      <%= f.submit '新規投稿する', class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

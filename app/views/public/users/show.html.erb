@@ -1,76 +1,77 @@
 
-  <div class="row">
-    <div class="col-md-2">
-      <%= render 'public/users/user', user: @user %>
-      <div class="d-grid gap-2 text-center">
-        <% if @user == current_user %>
-          <%= link_to edit_user_path(@user.id) do %>
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-user-edit"></i></button>
-          <% end %>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= render 'public/users/user', user: @user %>
+    <div class="d-grid gap-2 text-center">
+      <% if @user == current_user %>
+        <%= link_to edit_user_path(@user.id) do %>
+          <button type="button" class="btn btn-success btn-block"><i class="fas fa-user-edit"></i></button>
         <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <!--ユーザーの投稿一覧-->
+    <div class="row">
+      <h3 class="title mb-5 mx-auto">Post's</h3>
+    </div>
+    <div class="row mb-5">
+      <% @posts.each do |post| %>
+      <div class="col-lg-3 col-sm-6 mb-3">
+        <div class="mb-2 text-center">
+          <% if post.images.attached? %>
+            <%= image_tag post.images[0], size: "90x90", class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag 'sweets_icecream', size: "90x90", class: "rounded-circle" %>
+          <% end %>
+        </div>
+        <h4 class="text-center">
+          <%= link_to post_path(post.id), class: "text-dark" do %>
+            <%= post.title %>
+          <% end %>
+        </h4>
       </div>
+      <% end %>
     </div>
 
-    <div class="col-md-10">
-      <!--ユーザーの投稿一覧-->
-      <div class="row">
-        <h3 class="mb-5 mx-auto">Post's</h3>
-      </div>
-      <div class="row mb-5">
-        <% @posts.each do |post| %>
-        <div class="col-lg-3 col-sm-6 mb-3">
-          <div class="mb-2 text-center">
-            <% if post.images.attached? %>
-              <%= image_tag post.images[0], size: "70x70", class: "rounded-circle" %>
-            <% else %>
-              <%= image_tag 'sweets_icecream', size: "70x70", class: "rounded-circle" %>
-            <% end %>
-          </div>
-          <h4 class="text-center">
-            <%= link_to post_path(post.id) do %>
-              <%= post.title %>
-            <% end %>
-          </h4>
-        </div>
-        <% end %>
-      </div>
-
-      <!--ユーザーのレビュー一覧-->
-      <div class="row">
-        <h3 class="mb-5 mx-auto">Review's</h3>
-      </div>
-      <div class="row">
-        <% @reviews.each do |review| %>
-        <div class="col-lg-3 col-sm-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">
-                <%= link_to shop_review_path(review.shop_id, review.id) do %>
-                  <%= review.title %>
-                <% end %>
-              </h4>
-              <h5 class="card-text"><%= review.shop.name %></h5>
-              <div class="card-reviwes">
-                <div id="star-rate<%= review.id %>">
-                  <script>
-                    $('#star-rate<%= review.id %>').empty();
-                    $('#star-rate<%= review.id %>').raty({
-                      size : 36,
-                      starOff : '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      half : false,
-                      readOnly : true,
-                      score : <%= review.rate %>,
-                    });
-                  </script>
-                </div>
+    <!--ユーザーのレビュー一覧-->
+    <div class="row">
+      <h3 class="title mb-5 mx-auto">Review's</h3>
+    </div>
+    <div class="row">
+      <% @reviews.each do |review| %>
+      <div class="col-lg-3 col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= link_to shop_review_path(review.shop_id, review.id), class: "text-dark" do %>
+                <%= review.title %>
+              <% end %>
+            </h4>
+            <h5 class="card-text"><%= review.shop.name %></h5>
+            <div class="card-reviwes">
+              <div id="star-rate<%= review.id %>">
+                <script>
+                  $('#star-rate<%= review.id %>').empty();
+                  $('#star-rate<%= review.id %>').raty({
+                    size : 36,
+                    starOff : '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    half : false,
+                    readOnly : true,
+                    score : <%= review.rate %>,
+                  });
+                </script>
               </div>
             </div>
           </div>
         </div>
-        <% end %>
       </div>
+      <% end %>
+    </div>
 
-    </div><!--col-md-10-->
-  </div><!--row-->
+  </div><!--col-md-10-->
+</div><!--row-->
 

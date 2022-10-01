@@ -19,7 +19,7 @@
 
 .main{
 	position: relative;
-	min-height: 100vh;
+	min-height: 80vh;
 	box-sizing: border-box;
 	padding-bottom: 30px;
 }
@@ -29,8 +29,8 @@
   font-family: 'Righteous', cursive;
 }
 
-.btnx-outline-orange{
-  color: var(--bs-orange); background:var(--bs-white); border: 2px solid #FFCC80;
+.btnx-orange-light{
+  color: var(--bs-orange) ;background: #FFCC80; border: 2px solid #FFCC80;
 }
 
 .btn-item {

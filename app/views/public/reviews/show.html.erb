@@ -17,7 +17,7 @@
 
 <div class="col-lg-8 col-sm-10 container">
   <!--レビュー本体-->
-  <div class="card-border mx-auto">
+  <div class="card mx-auto mb-3">
     <div class="card-header bg-transparent">
       <% if @review.user.image.attached? %>
         <%= image_tag @review.user.image, size: "50x50" %>
@@ -43,7 +43,7 @@
       <div class="card-title">
         <%= @review.title %>
       </div>
-      <p class="card-text">
+      <p class="card-text" style="line-height:2rem">
         食べたアイス：<%= @review.ice_name %><br>
         値段：<%= @review.price %>円<br>
         <%= @review.feedback %>
@@ -52,7 +52,7 @@
   </div><!--card-border-->
 
   <!--レビューコメント-->
-  <div class="mx-auto">
+  <div class="mx-auto mb-3">
     <% @review.comments.each do |comment| %>
       <% if @review.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
@@ -62,7 +62,9 @@
       <%= comment.user.name %>
       <%= comment.comment %>
       <% if comment.user == current_user %>
-        <%= link_to "削除", shop_review_comment_path(@shop.id, @review.id, comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？" %>
+        <%= link_to shop_review_comment_path(@shop.id, @review.id, comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "text-dark" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -71,7 +73,7 @@
   <div class="mx-auto">
     <%= form_with model: [@review, @comment], url: shop_review_comments_path(@shop.id, @review.id) do |f| %>
       <%= f.text_area :comment %>
-      <%= f.submit "送信" %>
+      <%= f.submit "送信", class: "btn btn-success" %>
     <% end %>
   </div>
 
