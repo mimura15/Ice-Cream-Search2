@@ -4,7 +4,10 @@
   <div class="col-md-2">
     <%= render 'public/users/user', user: @user %>
     <div class="d-grid gap-2 text-center">
-      <% if @user == current_user %>
+      <!--<p>current_user:<#%= current_user.is_guest? %></p> ゲストがログインしているかの判定-->
+      <% if current_user.is_guest? %>
+          <button type="button" class="btn btn-second btn-block"　disabled><i class="fas fa-user-edit"></i></button>
+      <% else @user == current_user %>
         <%= link_to edit_user_path(@user.id) do %>
           <button type="button" class="btn btn-success btn-block"><i class="fas fa-user-edit"></i></button>
         <% end %>
@@ -28,7 +31,7 @@
           <% end %>
         </div>
         <h4 class="text-center">
-          <%= link_to post_path(post.id), class: "text-dark" do %>
+          <%= link_to post_path(post.id), class: "text-dark aaa" do %>
             <%= post.title %>
           <% end %>
         </h4>
