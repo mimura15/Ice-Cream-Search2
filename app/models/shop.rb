@@ -1,6 +1,6 @@
 class Shop < ApplicationRecord
-  has_many :posts
-  has_many :reviews
+  has_many :posts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_one_attached :image
 
   validates :image, presence: true

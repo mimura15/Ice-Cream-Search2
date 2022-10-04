@@ -40,5 +40,6 @@
 </div>
 
 <div class="col-lg-8 col-sm-10 mt-5 mx-auto">
-  <%= link_to "編集する", edit_admin_shop_path(@shop.id), class: "btn btn-success w-100 btn-lg" %>
+  <%= link_to "編集する", edit_admin_shop_path(@shop.id), class: "btn btn-success w-100 btn-lg mb-3" %>
+  <%= link_to "店舗の削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "この店舗を削除しますか？", class: "btn btn-danger w-100 btn-lg" %>
 </div>
