@@ -1,7 +1,7 @@
 <div class="col-lg-10 col-sm-12 mx-auto">
   <h2 class="text-center mb-5">本当に退会しますか？</h2>
   <h4 class="text-center mb-5">
-    退会すると、今までの投稿やレビューが消えますがよろしいですか？<br>
+    退会すると、今までの投稿やレビューがすべて消えますがよろしいですか？<br>
     よろしければ下の退会するボタンをクリックしてください
   </h4>
 
@@ -9,7 +9,7 @@
     <div class="d-grid gap-2 mx-auto mt-5">
       <%= link_to "退会しない", user_path(@user), class: "btn btn-success btn-block" %>
 
-      <%= link_to "退会する", withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか?"}, class: "btn btn-danger btn-block" %>
+      <%= link_to "退会する", user_path(@user.id), method: :delete, data: {confirm: "本当に退会しますか?"}, class: "btn btn-danger btn-block" %>
     </div>
   </div>
 </div>

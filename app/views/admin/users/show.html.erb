@@ -28,16 +28,6 @@
             <th>メッセージ</th>
             <td><%= @user.message %></td>
           </tr>
-          <tr>
-            <th>ステータス</th>
-            <td>
-              <% if @user.is_active %>
-                退会
-              <% else %>
-                有効
-              <% end %>
-            </td>
-          </tr>
         </tbody>
       </table>
   </div><!--col-->

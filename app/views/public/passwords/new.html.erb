@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h2>Forgot your password?</h2>
+  <h2 class="title mb-3">パスワードをお忘れですか?</h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="actions mb-2">
-      <%= f.submit "パスワードをリセットする", class: "btn btn-primary" %>
+      <%= f.submit "パスワードをリセットする", class: "btn btnx-orange-light" %>
     </div>
   <% end %>
 

@@ -25,9 +25,9 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
-  def withdraw
+  def destroy
     @user = current_user
-    @user.update(is_active: true)
+    @user.destroy
     reset_session
     flash[:notice] = "退会処理を実行しました"
     redirect_to root_path

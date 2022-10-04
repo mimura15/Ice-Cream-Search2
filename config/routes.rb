@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :admin
   devise_for :users, controllers: {
     registrations: 'public/registrations',
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_scope :user do
@@ -19,10 +20,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       collection do
         get :unsubscribe
-        patch :withdraw
       end
     end
     resources :shops, only: [:index, :show] do

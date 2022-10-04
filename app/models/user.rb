@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-  has_many :posts
-  has_many :reviews
+  has_many :posts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :image
 
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guest"
+      user.name = "GUEST"
     end
   end
 

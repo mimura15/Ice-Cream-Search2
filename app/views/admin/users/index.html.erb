@@ -6,7 +6,6 @@
           <th>ユーザーID</th>
           <th>ユーザーネーム</th>
           <th>メールアドレス</th>
-          <th>ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -19,13 +18,6 @@
             <% end %>
           </th>
           <th><%= user.email %></th>
-          <th>
-            <% if user.is_active %>
-              退会
-            <% else %>
-              有効
-            <% end %>
-          </th>
         </tr>
         <% end %>
       </tbody>
