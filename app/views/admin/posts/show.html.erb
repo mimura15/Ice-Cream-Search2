@@ -27,6 +27,8 @@
           </tr>
         </tbody>
       </table>
+
+      <%= link_to "投稿の削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？", class: "btn btn-danger w-100" %>
     </div>
 
     <div class="col-lg-8">
