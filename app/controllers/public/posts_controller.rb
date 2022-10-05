@@ -34,6 +34,8 @@ class Public::PostsController < ApplicationController
       post.save_tag(tag_list)
       redirect_to post_path(post)
     else
+      @post = Post.new
+      @shops = Shop.all
       render :new
     end
   end
@@ -71,7 +73,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :shop_id, images: [])
+    params.require(:post).permit(:title, :content, :shop_id, tag_name: [], images: [])
   end
 
 end

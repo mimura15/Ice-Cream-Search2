@@ -24,6 +24,8 @@ class Public::ReviewsController < ApplicationController
     if review.save
       redirect_to shop_review_path(shop_id,review.id)
     else
+      @review = Review.new
+      @shop = Shop.find(params[:shop_id])
       render :new
     end
   end
@@ -39,6 +41,8 @@ class Public::ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to shop_review_path(shop_id, @review.id)
     else
+      @review = Review.find(params[:id])
+      @shop = @review.shop
       render :edit
     end
   end

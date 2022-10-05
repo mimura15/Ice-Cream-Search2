@@ -18,6 +18,7 @@ class Admin::ShopsController < ApplicationController
     if shop.save
       redirect_to admin_shop_path(shop.id)
     else
+      @shop = Shop.new
       render :new
     end
   end

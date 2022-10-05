@@ -50,6 +50,7 @@
   <!--レビューコメント-->
   <div class="mx-auto mb-3">
     <% @review.comments.each do |comment| %>
+    <div class="w-100">
       <% if @review.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
       <% else %>
@@ -62,6 +63,7 @@
           <i class="fas fa-times"></i>
         <% end %>
       <% end %>
+    </div>
     <% end %>
   </div>
 
