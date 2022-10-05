@@ -59,3 +59,5 @@ gem 'devise'
 
 gem 'geocoder'
 gem 'dotenv-rails'
+
+g
