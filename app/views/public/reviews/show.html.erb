@@ -5,12 +5,8 @@
   <div class="col"></div>
   <div class="col text-right">
     <% if @review.user == current_user %>
-      <%= link_to edit_shop_review_path(@review.shop.id, @review.id) do %>
-        <button class="btn btn-success" type="button">レビュー編集</button>
-      <% end %>
-      <%= link_to shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "このレビューを削除しますか？" do %>
-        <button class="btn btn-danger" type="button">レビュー削除</button>
-      <% end %>
+      <%= link_to "レビュー編集", edit_shop_review_path(@review.shop.id, @review.id), class: "btn btn-success" %>
+      <%= link_to "レビュー削除", shop_review_path(@review.shop.id, @review.id), method: :delete, "data-confirm" => "このレビューを削除しますか？", class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>

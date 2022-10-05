@@ -34,15 +34,11 @@
     </table>
     <div class="mt-2 md-2">
       <div class="row">
-        <div class="col btn-item">
-          <%= link_to posts_path(shop_id: @shop.id), class: "text-dark" do %>
-            <button class="btn btn-block btn-light btnx-orange-light">投稿を見る</button>
-          <% end %>
+        <div class="col">
+          <%= link_to "投稿を見る", posts_path(shop_id: @shop.id), class: "btn btn-block btn-light btnx-orange-light" %>
         </div>
-        <div class="col btn-item">
-          <%= link_to shop_reviews_path(@shop.id), class: "text-dark" do %>
-            <button class="btn btn-block btn-light btnx-orange-light">レビューを見る</button>
-          <% end %>
+        <div class="col">
+          <%= link_to "レビューを見る", shop_reviews_path(@shop.id), class: "btn btn-block btn-light btnx-orange-light" %>
         </div>
       </div>
     </div>

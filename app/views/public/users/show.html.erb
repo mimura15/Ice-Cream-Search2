@@ -31,7 +31,7 @@
           <% end %>
         </div>
         <h4 class="text-center">
-          <%= link_to post_path(post.id), class: "text-dark link_item" do %>
+          <%= link_to post_path(post.id), class: "text-dark" do %>
             <%= post.title %>
           <% end %>
         </h4>
@@ -49,7 +49,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">
-              <%= link_to shop_review_path(review.shop_id, review.id), class: "text-dark link_item" do %>
+              <%= link_to shop_review_path(review.shop_id, review.id), class: "text-dark" do %>
                 <%= review.title %>
               <% end %>
             </h4>
