@@ -7,8 +7,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find(params[:shop_id])
+    # @shop = Shop.find(params[:shop_id])
     @review = Review.find(params[:id])
+    @shop = @review.shop
     @comment = Comment.new
   end
 
