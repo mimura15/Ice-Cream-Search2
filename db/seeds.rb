@@ -13,7 +13,6 @@ Admin.create!(
 
 User.create!(
   [
-    # {email: 'guest@example.com', name: "GUEST", message: 'このユーザーはゲストユーザーです' },
     {email: 'mina@test.com', name: 'みな', password: 'password', message: nil, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg" )},
     {email: 'jann@test.com', name: 'jann', password: 'password', message: 'Love Ice!', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg" )},
     {email: 'alice@test.com', name: 'アリス', password: 'password', message: 'アイスをもとめて三千里！' }
@@ -31,7 +30,8 @@ Shop.create!(
 
 Post.create!(
   [
-    {user_id: 1, shop_id: 1, title: '新店舗オープン！', content: '天神に新しいアイスクリーム専門店がオープン！おしゃれでおいしい！', non_display: false },
+    {user_id: 1, shop_id: 1, title: '新店舗オープン！', content: '天神に新しいアイスクリーム専門店がオープン！おしゃれでおいしい！', non_display: false,
+    images: [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg" ), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-shop1.jpg"), filename:"sample-shop1.jpg" )] },
     {user_id: 2, shop_id: 2, title: 'アイス休憩', content: '犬のお散歩の途中でふらりと立ち寄り。アイス片手に公園で休憩', non_display: false }
   ]
 )
