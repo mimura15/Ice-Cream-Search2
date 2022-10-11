@@ -41,14 +41,14 @@
   <!--レビューコメント-->
   <div class="mx-auto mt-3 mb-3">
     <% @review.comments.each do |comment| %>
-      <% if @review.user.image.attached? %>
+      <% if comment.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
       <% else %>
         <%= image_tag 'sweets_icecream.png', size: "50x50" %>
       <% end %>
       <%= comment.user.name %>
       <%= comment.comment %>
-      
+
     <% end %>
   </div>
 

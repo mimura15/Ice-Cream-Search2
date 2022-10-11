@@ -51,7 +51,7 @@
   <div class="mx-auto mb-3">
     <% @review.comments.each do |comment| %>
     <div class="w-100">
-      <% if @review.user.image.attached? %>
+      <% if comment.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
       <% else %>
         <%= image_tag 'sweets_icecream.png', size: "50x50" %>
