@@ -41,6 +41,7 @@
   <!--レビューコメント-->
   <div class="mx-auto mt-3 mb-3">
     <% @review.comments.each do |comment| %>
+    <div class="w-100">
       <% if comment.user.image.attached? %>
         <%= image_tag comment.user.image, size: "50x50" %>
       <% else %>
@@ -48,7 +49,7 @@
       <% end %>
       <%= comment.user.name %>
       <%= comment.comment %>
-
+    </div>
     <% end %>
   </div>
 
