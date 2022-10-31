@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_post, only: [:edit, :update, :destroy]
+
   def index
     @tag_list = Tag.all
     if params[:search].present?
@@ -48,6 +50,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    # redirect_to post_path(@post) unless @post.user_id == current_user.id
     tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
       if params[:post][:image_ids]
@@ -66,8 +69,12 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    # if @post.user.id == current_user.id
+      @post.destroy
+      redirect_to posts_path
+    # else
+      # redirect_to post_path(@post)
+    # end
   end
 
   private
@@ -76,4 +83,10 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :shop_id, tag_name: [], images: [])
   end
 
+  def correct_post
+    @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to post_path(@post), alert: 'このページへは遷移できません'
+    end
+  end
 end

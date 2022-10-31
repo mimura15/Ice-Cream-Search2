@@ -15,8 +15,13 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to shop_review_path(params[:shop_id],params[:review_id])
+    @comment = Comment.find(params[:id])
+    if @comment.user.id == current_user.id
+      @comment.destroy
+      redirect_to shop_review_path(params[:shop_id],params[:review_id])
+    else
+      redirect_to shop_review_path(params[:shop_id],params[:review_id])
+    end
   end
 
   private

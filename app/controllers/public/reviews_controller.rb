@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_review, only: [:edit, :update]
 
   def index
     @reviews = Review.where(shop_id:params[:shop_id])
@@ -50,13 +51,24 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to shop_reviews_path(params[:shop_id])
+    if @review.user.id == correct_user.id
+      @review.destroy
+      redirect_to shop_reviews_path(params[:shop_id])
+    else 
+      redirect_to shop_reviews_path(params[:shop_id])
+    end
   end
 
   private
 
   def review_params
     params.require(:review).permit(:shop_id, :title, :ice_name, :price, :feedback, :rate)
+  end
+  
+  def correct_review
+    @review = Review.find(params[:id])
+    unless @review.user.id == current_user.id
+      redirect_to shop_review_path(params[:shop_id], @review.id), alert: 'このページへは遷移できません'
+    end
   end
 end
