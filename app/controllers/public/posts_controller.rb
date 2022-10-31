@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
 
   def create
     post = current_user.posts.build(post_params)
-    tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if post.save
       post.save_tag(tag_list)
       redirect_to post_path(post)
@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     # redirect_to post_path(@post) unless @post.user_id == current_user.id
-    tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if @post.update(post_params)
       if params[:post][:image_ids]
         params[:post][:image_ids].each do |image_id|
