@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @shops = Shop.all
-    @tag_list = @post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:tag_name).join(',')
   end
 
   def update
