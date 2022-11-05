@@ -51,7 +51,7 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    if @review.user.id == correct_user.id
+    if @review.user.id == current_user.id
       @review.destroy
       redirect_to shop_reviews_path(params[:shop_id])
     else 
