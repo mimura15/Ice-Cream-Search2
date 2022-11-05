@@ -8,18 +8,19 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  def save_tag(sent_tags)
+  def save_tag!(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
 
     old_tags.each do |old|
-      self.tags.delete Tag.find_by(tag_name: old)
+      tag = Tag.find_by(tag_name: old)
+      tag_maps.find_by(tag_id: tag.id).destroy!
     end
 
     new_tags.each do |new|
-      new_post_tag = Tag.find_or_create_by(tag_name: new)
-      self.tags << new_post_tag
+      new_post_tag = Tag.find_or_create_by!(tag_name: new)
+      tag_maps.create!(tag_id: new_post_tag.id)
     end
   end
 

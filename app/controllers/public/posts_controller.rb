@@ -30,13 +30,15 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
-    if post.save
-      post.save_tag(tag_list)
-      redirect_to post_path(post)
+    if @post.valid?
+      ActiveRecord::Base.transaction do
+        @post.save!
+        @post.save_tag!(tag_list)
+      end
+      redirect_to post_path(@post)
     else
-      @post = Post.new
       @shops = Shop.all
       render :new
     end
@@ -52,19 +54,41 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # redirect_to post_path(@post) unless @post.user_id == current_user.id
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
-    if @post.update(post_params)
-      if params[:post][:image_ids]
-        params[:post][:image_ids].each do |image_id|
-          image = @post.images.find(image_id)
-          image.purge
-        end
-      end
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post.id)
-    else
+
+    #if @post.valid?
+    post_title = params[:post][:title]
+    post_content = params[:post][:content]
+    if post_title.blank? || post_content.blank?
+
       @shops = Shop.all
       render :edit
+    else
+      ActiveRecord::Base.transaction do
+        @post.update!(post_params)
+        @post.save_tag!(tag_list)
+      end
+      if params[:post][:image_ids]
+          params[:post][:image_ids].each do |image_id|
+            image = @post.images.find(image_id)
+            image.purge
+          end
+      end
+      redirect_to post_path(@post.id)
     end
+
+    # if @post.update(post_params)
+    #   if params[:post][:image_ids]
+    #     params[:post][:image_ids].each do |image_id|
+    #       image = @post.images.find(image_id)
+    #       image.purge
+    #     end
+    #   end
+    #   @post.save_tag(tag_list)
+    #   redirect_to post_path(@post.id)
+    # else
+    #   @shops = Shop.all
+    #   render :edit
+    # end
   end
 
   def destroy
