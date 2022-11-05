@@ -55,7 +55,6 @@ class Public::PostsController < ApplicationController
     # redirect_to post_path(@post) unless @post.user_id == current_user.id
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
 
-    #if @post.valid?
     post_title = params[:post][:title]
     post_content = params[:post][:content]
     if post_title.blank? || post_content.blank?
@@ -75,20 +74,6 @@ class Public::PostsController < ApplicationController
       end
       redirect_to post_path(@post.id)
     end
-
-    # if @post.update(post_params)
-    #   if params[:post][:image_ids]
-    #     params[:post][:image_ids].each do |image_id|
-    #       image = @post.images.find(image_id)
-    #       image.purge
-    #     end
-    #   end
-    #   @post.save_tag(tag_list)
-    #   redirect_to post_path(@post.id)
-    # else
-    #   @shops = Shop.all
-    #   render :edit
-    # end
   end
 
   def destroy
