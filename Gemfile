@@ -61,11 +61,11 @@ gem 'devise'
 # 地名から座標返還
 gem 'geocoder'
 
-# 環境変数の管理
+# 環境変数の管理 本番環境用のMySQL
 gem 'dotenv-rails'
-# group :production do
-#   gem 'mysql2'
-# end
+group :production do
+  gem 'mysql2'
+end
 
 gem "net-smtp"
 gem "net-pop"
